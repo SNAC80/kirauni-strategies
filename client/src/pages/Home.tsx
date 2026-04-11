@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <Layout>
       {/* ===== HERO ===== */}
-      <section className="relative bg-white overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative bg-white overflow-hidden">
         {/* Geometric background with crown-inspired angular shapes */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Right panel soft gradient */}
@@ -163,14 +163,14 @@ export default function Home() {
                   transition: "opacity 0.5s ease-out 480ms",
                 }}
               >
-                <div className="flex flex-nowrap items-center gap-x-5 gap-y-2 overflow-x-auto">
-                  {[
-                    "Houston-based",
-                    "Black woman-led",
-                    "AI-powered systems",
-                    "20+ years experience"
-                  ].map((tag, i) => (
-                    <span key={i} className="flex items-center gap-1.5 text-xs font-['Montserrat'] tracking-wide whitespace-nowrap flex-shrink-0" style={{ color: "#6B7280" }}>
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                {[
+                  "Houston-based",
+                  "Black woman-led",
+                  "AI-powered systems",
+                  "20+ years experience"
+                ].map((tag, i) => (
+                  <span key={i} className="flex items-center gap-1.5 text-xs font-['Montserrat'] tracking-wide" style={{ color: "#6B7280" }}>
                       <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#D4AF37" }} />
                       {tag}
                     </span>
@@ -251,21 +251,21 @@ export default function Home() {
               {[
                 {
                   icon: <Search size={24} />,
-                  bullet: "Not showing up in search or AI tools",
+                  bullet: "The Visibility Gap",
                   title: "You are invisible online.",
-                  desc: "Visibility is not optional. If you are not showing up in search or AI tools, you are losing business to competitors who are.",
+                  desc: "Your ideal customers are searching for exactly what you offer — but they are finding your competitors instead. Without a strong digital presence and AI-optimized visibility, you are leaving money on the table every single day.",
                 },
                 {
                   icon: <Lightbulb size={24} />,
-                  bullet: "Message is not clear",
-                  title: "Your message is confusing.",
-                  desc: "If people do not understand what you do in seconds, they will not buy it — no matter how good you are at what you do.",
+                  bullet: "The Messaging Gap",
+                  title: "Your message is not landing.",
+                  desc: "You know what you do — but when people visit your website or social profiles, they leave confused. Unclear messaging means potential clients cannot see the value you bring, so they move on without ever reaching out.",
                 },
                 {
                   icon: <Settings size={24} />,
-                  bullet: "Systems are not built to convert",
-                  title: "Your systems are not built to convert.",
-                  desc: "Without systems, every lead is a missed opportunity. Structure creates consistent results and scalable growth.",
+                  bullet: "The Systems Gap",
+                  title: "Your business cannot scale without structure.",
+                  desc: "You are doing everything manually — following up by hand, losing leads in your inbox, and running on hustle instead of systems. Without automated workflows and a clear conversion path, growth stays inconsistent.",
                 },
               ].map((item, i) => (
                 <FadeSection key={i} delay={i * 120} className="h-full">
@@ -283,14 +283,108 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* ===== AI GROWTH BRIDGE ===== */}
+      <section className="section-purple relative overflow-hidden">
+        {/* Background texture */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10" style={{ background: "#D4AF37", filter: "blur(100px)" }} />
+          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-10" style={{ background: "#D4AF37", filter: "blur(80px)" }} />
+        </div>
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6">
+              <FadeSection>
+                <GoldEyebrow>AI-Powered Growth</GoldEyebrow>
+                <h2 className="font-['Montserrat'] font-bold text-white mb-6" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", letterSpacing: "-0.02em" }}>
+                  Unlock AI-Powered Growth
+                </h2>
+                <p className="text-purple-200 text-lg leading-relaxed mb-8 font-['Open_Sans']">
+                  We fix what is not working and build what does. Kirauni brings visibility, clarity, and operational structure together so growth is not just possible — it is sustainable.
+                </p>
+                <Link href="/work-with-us" className="btn-white">
+                  Let's Build Your Strategy
+                  <ArrowRight size={16} />
+                </Link>
+              </FadeSection>
+            </div>
+            <div className="lg:col-span-6">
+              <FadeSection delay={150}>
+                <div className="grid grid-cols-2 gap-4">
+                  <img src={WEB3_IMAGE} alt="AI Systems" className="rounded-lg w-full object-cover shadow-lg" style={{ height: "180px" }} />
+                  <img src={WEB1_IMAGE} alt="Business Strategy" className="rounded-lg w-full object-cover shadow-lg mt-8" style={{ height: "180px" }} />
+                  <img src={WEB2_IMAGE} alt="Business Analysis" className="rounded-lg w-full object-cover shadow-lg -mt-4" style={{ height: "180px" }} />
+                  <div className="rounded-lg flex items-center justify-center p-6" style={{ backgroundColor: "rgba(212, 175, 55, 0.15)", border: "1px solid rgba(212, 175, 55, 0.3)", height: "180px", marginTop: "2rem" }}>
+                    <div className="text-center">
+                      <p className="font-['Montserrat'] font-700 text-white text-3xl mb-1">20+</p>
+                      <p className="font-['Open_Sans'] text-purple-200 text-sm">Years of Systems Experience</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeSection>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== AI PHONE AGENT SPOTLIGHT ===== */}
+      <section className="section-white">
+        <div className="container">
+          <FadeSection>
+            <div className="rounded-2xl overflow-hidden" style={{ background: "linear-gradient(135deg, #1A1A1A 0%, #2D1B4E 100%)", border: "2px solid #D4AF37" }}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div className="lg:col-span-8 p-10 lg:p-14">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="text-xs font-['Montserrat'] font-700 tracking-widest uppercase px-3 py-1.5 rounded-full" style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}>NEW ADD-ON</span>
+                    <span className="text-xs font-['Montserrat'] font-500 tracking-wider uppercase" style={{ color: "#D4AF37" }}>Available with any package</span>
+                  </div>
+                  <h2 className="font-['Montserrat'] font-bold text-white mb-4" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)", letterSpacing: "-0.02em" }}>
+                    AI Telephone Agent — <span style={{ color: "#D4AF37" }}>Never Miss a Lead Again</span>
+                  </h2>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-8 font-['Open_Sans']">
+                    Your AI-powered phone agent answers calls 24/7, qualifies leads, books appointments, and follows up — all without you lifting a finger. It sounds like a real team member and works while you sleep.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    {[
+                      { icon: "📞", label: "Answers calls 24/7" },
+                      { icon: "🤖", label: "Qualifies leads instantly" },
+                      { icon: "📅", label: "Books appointments automatically" },
+                    ].map((f) => (
+                      <div key={f.label} className="flex items-center gap-3 rounded-lg p-3" style={{ backgroundColor: "rgba(212, 175, 55, 0.08)", border: "1px solid rgba(212, 175, 55, 0.2)" }}>
+                        <span className="text-xl">{f.icon}</span>
+                        <span className="text-sm font-['Open_Sans'] text-gray-200">{f.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link href="/services#ai-phone-agent" className="btn-gold inline-flex items-center gap-2">
+                    Learn More About the AI Phone Agent
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
+                <div className="lg:col-span-4 flex items-center justify-center p-10" style={{ background: "rgba(212, 175, 55, 0.06)" }}>
+                  <div className="text-center">
+                    <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "rgba(212, 175, 55, 0.15)", border: "2px solid #D4AF37" }}>
+                      <span className="text-5xl">📱</span>
+                    </div>
+                    <p className="font-['Montserrat'] font-700 text-white text-2xl mb-1">$497</p>
+                    <p className="font-['Open_Sans'] text-gray-400 text-sm mb-1">/month</p>
+                    <p className="font-['Open_Sans'] text-gray-400 text-xs">+ $1,000 setup fee</p>
+                    <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(212, 175, 55, 0.2)" }}>
+                      <p className="font-['Open_Sans'] text-gray-300 text-xs leading-relaxed">Add to any Kirauni package and let AI handle your inbound calls around the clock.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeSection>
+        </div>
+      </section>
 
       {/* ===== THREE PILLARS ===== */}
       <section className="section-white">
         <div className="container">
           <FadeSection>
-            <div className="mb-12">
-              <GoldEyebrow>Our Approach</GoldEyebrow>
-              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A]" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", letterSpacing: "-0.02em" }}>
+            <div className="text-center mb-12">
+              <GoldEyebrow>Our Approach</GoldEyebrow>        <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A]" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", letterSpacing: "-0.02em" }}>
                 Clarity. Visibility. Systems that convert.
               </h2>
             </div>
@@ -382,49 +476,6 @@ export default function Home() {
                 </div>
               </div>
             </FadeSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== AI GROWTH BRIDGE ===== */}
-      <section className="section-purple relative overflow-hidden">
-        {/* Background texture */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10" style={{ background: "#D4AF37", filter: "blur(100px)" }} />
-          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-10" style={{ background: "#D4AF37", filter: "blur(80px)" }} />
-        </div>
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6">
-              <FadeSection>
-                <GoldEyebrow>AI-Powered Growth</GoldEyebrow>
-                <h2 className="font-['Montserrat'] font-bold text-white mb-6" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", letterSpacing: "-0.02em" }}>
-                  Unlock AI-Powered Growth
-                </h2>
-                <p className="text-purple-200 text-lg leading-relaxed mb-8 font-['Open_Sans']">
-                  We fix what is not working and build what does. Kirauni brings visibility, clarity, and operational structure together so growth is not just possible — it is sustainable.
-                </p>
-                <Link href="/work-with-us" className="btn-white">
-                  Let's Build Your Strategy
-                  <ArrowRight size={16} />
-                </Link>
-              </FadeSection>
-            </div>
-            <div className="lg:col-span-6">
-              <FadeSection delay={150}>
-                <div className="grid grid-cols-2 gap-4">
-                  <img src={WEB3_IMAGE} alt="AI Systems" className="rounded-lg w-full object-cover shadow-lg" style={{ height: "180px" }} />
-                  <img src={WEB1_IMAGE} alt="Business Strategy" className="rounded-lg w-full object-cover shadow-lg mt-8" style={{ height: "180px" }} />
-                  <img src={WEB2_IMAGE} alt="Business Analysis" className="rounded-lg w-full object-cover shadow-lg -mt-4" style={{ height: "180px" }} />
-                  <div className="rounded-lg flex items-center justify-center p-6" style={{ backgroundColor: "rgba(212, 175, 55, 0.15)", border: "1px solid rgba(212, 175, 55, 0.3)", height: "180px", marginTop: "2rem" }}>
-                    <div className="text-center">
-                      <p className="font-['Montserrat'] font-700 text-white text-3xl mb-1">20+</p>
-                      <p className="font-['Open_Sans'] text-purple-200 text-sm">Years of Systems Experience</p>
-                    </div>
-                  </div>
-                </div>
-              </FadeSection>
-            </div>
           </div>
         </div>
       </section>
