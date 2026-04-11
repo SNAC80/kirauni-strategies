@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Mail, Phone, ArrowRight, CheckCircle2 } from "lucide-react";
 
-const VISIBILITY_SCAN_URL = "/visibility-scan";
+const VISIBILITY_SCAN_URL = "https://go.kiraunistrategies.com/optin-page";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const [visible, setVisible] = useState(false);
