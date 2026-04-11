@@ -154,6 +154,8 @@ const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(
 
 export default defineConfig({
   plugins,
+  // Use /kirauni-strategies/ base path when building for GitHub Pages
+  base: process.env.GITHUB_ACTIONS ? '/kirauni-strategies/' : '/',
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

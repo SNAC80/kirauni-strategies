@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch } from "wouter";
+import { Route, Router, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -18,7 +18,11 @@ import TermsConditions from "./pages/TermsConditions";
 import RefundPolicy from "./pages/RefundPolicy";
 import NotFound from "./pages/NotFound";
 
-function Router() {
+// Use /kirauni-strategies as base path when deployed to GitHub Pages
+// import.meta.env.BASE_URL is set by Vite based on the `base` config option
+const basePath = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
+
+function AppRoutes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -49,7 +53,9 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Router base={basePath}>
+            <AppRoutes />
+          </Router>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

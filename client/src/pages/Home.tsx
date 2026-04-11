@@ -367,7 +367,7 @@ export default function Home() {
                     </div>
                     <p className="font-['Montserrat'] font-700 text-white text-2xl mb-1">$497</p>
                     <p className="font-['Open_Sans'] text-gray-400 text-sm mb-1">/month</p>
-                    <p className="font-['Open_Sans'] text-gray-400 text-xs">+ $1,000 setup fee</p>
+                    <p className="font-['Open_Sans'] text-gray-400 text-xs">+ $1,500 setup fee</p>
                     <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(212, 175, 55, 0.2)" }}>
                       <p className="font-['Open_Sans'] text-gray-300 text-xs leading-relaxed">Add to any Kirauni package and let AI handle your inbound calls around the clock.</p>
                     </div>
