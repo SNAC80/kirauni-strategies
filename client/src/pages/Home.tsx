@@ -12,6 +12,7 @@ import { ArrowRight, CheckCircle2, Search, Lightbulb, Settings, TrendingUp, Eye 
 
 const VISIBILITY_SCAN_URL = "/visibility-scan";
 const STRATEGY_AUDIT_URL = "/strategy-audit";
+const AI_PHONE_AGENT_URL = "https://go.kiraunistrategies.com/optin-page";
 
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/Untitleddesign(10)_290db42d.png";
 const KCELL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/KSCell(1)_aab683bb.png";
@@ -232,6 +233,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== AI PHONE AGENT SPOTLIGHT ===== */}
+      <section className="section-white">
+        <div className="container">
+          <FadeSection>
+            <div className="rounded-2xl overflow-hidden" style={{ background: "linear-gradient(135deg, #1A1A1A 0%, #2D1B4E 100%)", border: "2px solid #D4AF37" }}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div className="lg:col-span-8 p-10 lg:p-14">
+                  <div className="flex items-center gap-3 mb-5 flex-wrap">
+                    <span className="text-xs font-['Montserrat'] font-700 tracking-widest uppercase px-3 py-1.5 rounded-full" style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}>FLAGSHIP OFFER</span>
+                    <span className="text-xs font-['Montserrat'] font-500 tracking-wider uppercase" style={{ color: "#D4AF37" }}>AI-powered lead capture and follow-up</span>
+                  </div>
+                  <h2 className="font-['Montserrat'] font-bold text-white mb-4" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)", letterSpacing: "-0.02em" }}>
+                    AI Telephone Agent — <span style={{ color: "#D4AF37" }}>Never Miss a Lead Again</span>
+                  </h2>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-8 font-['Open_Sans'] max-w-3xl">
+                    As Kirauni's flagship automation service, your AI-powered phone agent answers calls 24/7, qualifies leads, books appointments, and follows up automatically. It gives growing businesses a consistent first response without adding payroll or missing opportunities after hours.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    {[
+                      { icon: "📞", label: "Answers calls 24/7" },
+                      { icon: "🤖", label: "Qualifies leads instantly" },
+                      { icon: "📅", label: "Books appointments automatically" },
+                    ].map((f) => (
+                      <div key={f.label} className="flex items-center gap-3 rounded-lg p-3" style={{ backgroundColor: "rgba(212, 175, 55, 0.08)", border: "1px solid rgba(212, 175, 55, 0.2)" }}>
+                        <span className="text-xl">{f.icon}</span>
+                        <span className="text-sm font-['Open_Sans'] text-gray-200">{f.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <a href={AI_PHONE_AGENT_URL} className="btn-gold inline-flex items-center gap-2">
+                    Learn More About the AI Phone Agent
+                    <ArrowRight size={16} />
+                  </a>
+                </div>
+                <div className="lg:col-span-4 flex items-center justify-center p-10" style={{ background: "rgba(212, 175, 55, 0.06)" }}>
+                  <div className="text-center">
+                    <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "rgba(212, 175, 55, 0.15)", border: "2px solid #D4AF37" }}>
+                      <span className="text-5xl">📱</span>
+                    </div>
+                    <p className="font-['Montserrat'] font-700 text-white text-2xl mb-1">$497</p>
+                    <p className="font-['Open_Sans'] text-gray-400 text-sm mb-1">/month</p>
+                    <p className="font-['Open_Sans'] text-gray-400 text-xs">+ $1,500 setup fee</p>
+                    <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(212, 175, 55, 0.2)" }}>
+                      <p className="font-['Open_Sans'] text-gray-300 text-xs leading-relaxed">Built for businesses that want every inbound call answered, qualified, and routed with a polished client experience.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeSection>
+        </div>
+      </section>
+
       {/* ===== PROBLEM SECTION ===== */}
       <section className="section-gray">
         <div className="container">
@@ -326,58 +380,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== AI PHONE AGENT SPOTLIGHT ===== */}
-      <section className="section-white">
-        <div className="container">
-          <FadeSection>
-            <div className="rounded-2xl overflow-hidden" style={{ background: "linear-gradient(135deg, #1A1A1A 0%, #2D1B4E 100%)", border: "2px solid #D4AF37" }}>
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-                <div className="lg:col-span-8 p-10 lg:p-14">
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="text-xs font-['Montserrat'] font-700 tracking-widest uppercase px-3 py-1.5 rounded-full" style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}>NEW ADD-ON</span>
-                    <span className="text-xs font-['Montserrat'] font-500 tracking-wider uppercase" style={{ color: "#D4AF37" }}>Available with any package</span>
-                  </div>
-                  <h2 className="font-['Montserrat'] font-bold text-white mb-4" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)", letterSpacing: "-0.02em" }}>
-                    AI Telephone Agent — <span style={{ color: "#D4AF37" }}>Never Miss a Lead Again</span>
-                  </h2>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-8 font-['Open_Sans']">
-                    Your AI-powered phone agent answers calls 24/7, qualifies leads, books appointments, and follows up — all without you lifting a finger. It sounds like a real team member and works while you sleep.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                    {[
-                      { icon: "📞", label: "Answers calls 24/7" },
-                      { icon: "🤖", label: "Qualifies leads instantly" },
-                      { icon: "📅", label: "Books appointments automatically" },
-                    ].map((f) => (
-                      <div key={f.label} className="flex items-center gap-3 rounded-lg p-3" style={{ backgroundColor: "rgba(212, 175, 55, 0.08)", border: "1px solid rgba(212, 175, 55, 0.2)" }}>
-                        <span className="text-xl">{f.icon}</span>
-                        <span className="text-sm font-['Open_Sans'] text-gray-200">{f.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href="/services#ai-phone-agent" className="btn-gold inline-flex items-center gap-2">
-                    Learn More About the AI Phone Agent
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-                <div className="lg:col-span-4 flex items-center justify-center p-10" style={{ background: "rgba(212, 175, 55, 0.06)" }}>
-                  <div className="text-center">
-                    <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "rgba(212, 175, 55, 0.15)", border: "2px solid #D4AF37" }}>
-                      <span className="text-5xl">📱</span>
-                    </div>
-                    <p className="font-['Montserrat'] font-700 text-white text-2xl mb-1">$497</p>
-                    <p className="font-['Open_Sans'] text-gray-400 text-sm mb-1">/month</p>
-                    <p className="font-['Open_Sans'] text-gray-400 text-xs">+ $1,500 setup fee</p>
-                    <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(212, 175, 55, 0.2)" }}>
-                      <p className="font-['Open_Sans'] text-gray-300 text-xs leading-relaxed">Add to any Kirauni package and let AI handle your inbound calls around the clock.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </FadeSection>
-        </div>
-      </section>
 
       {/* ===== THREE PILLARS ===== */}
       <section className="section-white">
