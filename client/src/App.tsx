@@ -10,6 +10,9 @@ import ClientWins from "./pages/ClientWins";
 import About from "./pages/About";
 import WorkWithUs from "./pages/WorkWithUs";
 import Contact from "./pages/Contact";
+import VisibilityScan from "./pages/VisibilityScan";
+import StrategyAudit from "./pages/StrategyAudit";
+import Apply from "./pages/Apply";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import RefundPolicy from "./pages/RefundPolicy";
@@ -25,6 +28,12 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/work-with-us" component={WorkWithUs} />
       <Route path="/contact" component={Contact} />
+      {/* Dedicated Cal.com booking pages */}
+      <Route path="/visibility-scan" component={VisibilityScan} />
+      <Route path="/strategy-audit" component={StrategyAudit} />
+      {/* Application form */}
+      <Route path="/apply" component={Apply} />
+      {/* Legal */}
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-conditions" component={TermsConditions} />
       <Route path="/refund-policy" component={RefundPolicy} />

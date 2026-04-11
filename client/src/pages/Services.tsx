@@ -1,12 +1,16 @@
 /**
  * Kirauni Strategies — Services Page
- * Design: Crown Authority — editorial layout, service cards with varied visual weight
+ * Design: Crown Authority — horizontal card grid, purple/gold palette
+ * Fix: Free Visibility Scan → Cal.com, all cards horizontally aligned, page-top anchor,
+ *      scroll to top on mount, retainer cards same height
  */
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+const VISIBILITY_SCAN_URL = "/visibility-scan";
+const STRATEGY_AUDIT_URL = "/strategy-audit";
 const WEB1_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/Web1_a62da9d9.png";
 const WEB2_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/Web2_e398e1ad.png";
 const WEB3_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/Web3_89638a18.png";
@@ -33,102 +37,126 @@ function GoldEyebrow({ children }: { children: React.ReactNode }) {
 
 const services = [
   {
-    num: "01",
-    title: "Brand Foundation Sprint",
-    tagline: "Get Clear. Get Visible.",
-    forWho: "Businesses with messy, unclear, or underdeveloped brands",
+    title: "Free Visibility Scan",
+    tagline: "See what is missing — and exactly how to fix it.",
+    audience: "For businesses that want to understand their current visibility before investing.",
     includes: [
-      "Clear positioning: what you do and who you serve",
-      "Simple, clean brand identity",
-      "Starter online presence",
-      "Messaging that makes sense and connects",
+      "Review of your Google Business Profile and online presence",
+      "Identification of 3 quick wins you can implement immediately",
+      "Visibility gap analysis",
+      "Clear next steps tailored to your business",
     ],
-    price: null,
-    cta: "Ask About Brand Foundation",
-    href: "/contact",
-    image: WEB1_IMAGE,
-    featured: false,
-  },
-  {
-    num: "02",
-    title: "AI Visibility Audit",
-    tagline: "See What Is Not Working.",
-    forWho: "Businesses that exist but are not being found",
-    includes: [
-      "Website and online presence review",
-      "AI and search visibility scan",
-      "Missed opportunities and friction points",
-      "Clear next steps",
-    ],
-    price: "Starting at $297",
-    cta: "Book Your Audit",
-    href: "/work-with-us",
-    image: WEB2_IMAGE,
-    featured: true,
-  },
-  {
-    num: "03",
-    title: "AI Visibility Optimization",
-    tagline: "Fix What Is Broken.",
-    forWho: "Businesses ready to improve discoverability and authority",
-    includes: [
-      "Messaging and positioning improvements",
-      "Website and content optimization",
-      "Visibility and authority signals",
-      "Strategic updates that increase discoverability",
-    ],
-    price: null,
-    cta: "Improve My Visibility",
-    href: "/work-with-us",
+    price: "Complimentary",
+    cta: "Book Your Free Visibility Scan",
+    href: VISIBILITY_SCAN_URL,
+    isExternal: true,
     image: WEB3_IMAGE,
     featured: false,
   },
   {
-    num: "04",
-    title: "AI Visibility + Automation System",
-    tagline: "Scale What Works.",
-    forWho: "Businesses ready to scale with better structure",
+    title: "Strategy + Visibility Audit",
+    tagline: "A comprehensive look at what is limiting your growth.",
+    audience: "For businesses ready to understand the full picture and get a clear action plan.",
     includes: [
-      "Lead capture and follow-up systems",
-      "AI-supported workflows",
-      "Content and visibility systems",
-      "Scalable growth strategy",
+      "Deep dive analysis of your digital presence and positioning",
+      "Google Business Profile and AI search optimization review",
+      "Messaging and brand clarity assessment",
+      "Prioritized action plan with implementation guidance",
     ],
-    price: null,
-    cta: "Build My System",
+    price: "Starting at $297",
+    cta: "Book Your Strategy Audit",
+    href: VISIBILITY_SCAN_URL,
+    isExternal: true,
+    image: WEB2_IMAGE,
+    featured: true,
+  },
+  {
+    title: "AI Visibility Optimization",
+    tagline: "Get found in AI-powered search and local discovery.",
+    audience: "For businesses that need to show up where customers are searching.",
+    includes: [
+      "Google Business Profile optimization and management",
+      "AI search visibility improvements",
+      "Local SEO and presence enhancement",
+      "Monthly performance reporting",
+    ],
+    price: "Starting at $497/mo",
+    cta: "Apply to Work Together",
     href: "/work-with-us",
+    isExternal: false,
     image: WEB1_IMAGE,
     featured: false,
   },
   {
-    num: "05",
-    title: "Ongoing Growth Support",
-    tagline: "Stay Visible. Stay Competitive.",
-    forWho: "Businesses wanting ongoing optimization and strategic support",
+    title: "AI Visibility + Automation System",
+    tagline: "Visibility and systems working together to convert.",
+    audience: "For businesses ready to build infrastructure that captures and converts leads.",
     includes: [
-      "Continuous optimization",
-      "Strategy adjustments",
-      "Support as the business evolves",
+      "Full AI visibility optimization package",
+      "Lead capture and follow-up automation",
+      "Workflow automation for client intake",
+      "Systems documentation and training",
     ],
-    price: null,
-    cta: "Explore Retainers",
+    price: "Starting at $997/mo",
+    cta: "Apply to Work Together",
     href: "/work-with-us",
+    isExternal: false,
+    image: WEB3_IMAGE,
+    featured: false,
+  },
+  {
+    title: "Brand Foundation Sprint",
+    tagline: "Build the brand infrastructure your business needs to grow.",
+    audience: "For new or early-stage businesses establishing their brand identity.",
+    includes: [
+      "Brand messaging and positioning framework",
+      "Visual identity direction and guidelines",
+      "Offer clarity and audience definition",
+      "Launch-ready brand assets",
+    ],
+    price: "Starting at $1,497",
+    cta: "Apply to Work Together",
+    href: "/work-with-us",
+    isExternal: false,
     image: WEB2_IMAGE,
     featured: false,
   },
 ];
 
 const retainers = [
-  { name: "Starter Retainer", price: "$400/mo", desc: "Essential visibility and strategy support for growing businesses." },
-  { name: "Growth Retainer", price: "$750/mo", desc: "Deeper engagement with ongoing optimization and implementation." },
-  { name: "Crown Retainer", price: "$1,500/mo", desc: "Full strategic partnership with priority access and comprehensive support." },
+  {
+    name: "Visibility Essentials",
+    price: "$497",
+    period: "/month",
+    desc: "For businesses that need consistent visibility management and monthly strategy support.",
+    includes: ["Google Business Profile management", "Monthly visibility report", "1 strategy call per month", "Email support"],
+    featured: false,
+  },
+  {
+    name: "Growth Partner",
+    price: "$997",
+    period: "/month",
+    desc: "For businesses ready to grow with ongoing visibility, systems, and strategic support.",
+    includes: ["Everything in Visibility Essentials", "Automation and systems support", "Content strategy guidance", "2 strategy calls per month", "Priority support"],
+    featured: true,
+  },
+  {
+    name: "Strategic Operations",
+    price: "$1,997",
+    period: "/month",
+    desc: "For businesses that need a full strategic operations partner for visibility and systems.",
+    includes: ["Everything in Growth Partner", "Full systems implementation", "Brand and messaging management", "Weekly check-ins", "Dedicated strategy support"],
+    featured: false,
+  },
 ];
 
 export default function Services() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-white pt-16">
+      <section className="section-white pt-8">
         <div className="container">
           <div className="max-w-3xl">
             <FadeSection>
@@ -136,79 +164,114 @@ export default function Services() {
               <h1 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-6" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.02em" }}>
                 Services built for visibility, clarity, and systems that scale.
               </h1>
-              <p className="text-[#6B7280] text-lg leading-relaxed font-['Open_Sans']">
-                Kirauni Strategies offers boutique strategic services for businesses ready to be found, understood, and supported by smarter infrastructure. Every engagement is designed to remove friction, strengthen discoverability, and create a stronger foundation for growth.
+              <p className="text-[#6B7280] text-lg leading-relaxed font-['Open_Sans'] mb-8">
+                Every Kirauni service is designed to address a specific gap — visibility, clarity, or systems. Start where you are and build from there.
               </p>
+              <div className="flex flex-wrap gap-4">
+                <a href={VISIBILITY_SCAN_URL} className="btn-primary">
+                  <span>Book Free Visibility Scan</span>
+                  <ArrowRight size={16} />
+                </a>
+                <Link href="/work-with-us" className="btn-secondary">
+                  Work With Us
+                </Link>
+              </div>
             </FadeSection>
           </div>
         </div>
       </section>
 
-      {/* Services */}
+      {/* Services — 3-column grid, all cards same height */}
       <section className="section-gray">
         <div className="container">
-          <div className="space-y-8">
-            {services.map((service, i) => (
+          <FadeSection>
+            <div className="mb-10">
+              <GoldEyebrow>Our Services</GoldEyebrow>
+              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A]" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}>
+                Choose Your Starting Point
+              </h2>
+              <p className="text-[#6B7280] font-['Open_Sans'] mt-2">Every service is designed to move you forward from where you are right now.</p>
+            </div>
+          </FadeSection>
+
+          {/* Row 1 — 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 items-stretch">
+            {services.slice(0, 3).map((svc, i) => (
               <FadeSection key={i} delay={i * 80}>
                 <div
-                  className="rounded-lg overflow-hidden"
-                  style={{ border: service.featured ? "2px solid #6B3FA0" : "1px solid #e8e8e8", backgroundColor: "#FFFFFF" }}
+                  className="rounded-lg overflow-hidden h-full flex flex-col card-hover"
+                  style={{ border: svc.featured ? "2px solid #6B3FA0" : "1px solid #e8e8e8", backgroundColor: "#FFFFFF" }}
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12">
-                    {/* Content */}
-                    <div className="lg:col-span-8 p-8 lg:p-10">
-                      <div className="flex items-start justify-between mb-5 flex-wrap gap-3">
-                        <div>
-                          <div className="flex items-center gap-3 mb-2">
-                            <span className="font-['Montserrat'] font-700 text-2xl" style={{ color: "rgba(107, 63, 160, 0.2)" }}>{service.num}</span>
-                            {service.featured && (
-                              <span className="text-xs font-['Montserrat'] font-600 tracking-wider uppercase px-3 py-1 rounded-full" style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}>
-                                Most Requested
-                              </span>
-                            )}
-                          </div>
-                          <h2 className="font-['Montserrat'] font-700 text-[#1A1A1A] text-2xl mb-1">{service.title}</h2>
-                          <p className="font-['Montserrat'] font-500 text-sm" style={{ color: "#6B3FA0" }}>{service.tagline}</p>
-                        </div>
-                        {service.price && (
-                          <div className="text-right">
-                            <p className="font-['Montserrat'] font-700 text-xl" style={{ color: "#6B3FA0" }}>{service.price}</p>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="mb-5">
-                        <p className="text-xs font-['Montserrat'] font-600 uppercase tracking-wider mb-2" style={{ color: "#D4AF37" }}>For</p>
-                        <p className="text-[#6B7280] text-sm font-['Open_Sans']">{service.forWho}</p>
-                      </div>
-
-                      <div className="mb-6">
-                        <p className="text-xs font-['Montserrat'] font-600 uppercase tracking-wider mb-3" style={{ color: "#6B3FA0" }}>Includes</p>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                          {service.includes.map((item) => (
-                            <li key={item} className="flex items-start gap-2.5">
-                              <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#6B3FA0" }} />
-                              <span className="text-[#1A1A1A] text-sm font-['Open_Sans']">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <Link href={service.href} className={service.featured ? "btn-primary" : "btn-secondary"}>
-                        <span>{service.cta}</span>
-                        <ArrowRight size={15} />
+                  {svc.featured && (
+                    <div className="px-6 pt-4">
+                      <span className="text-xs font-['Montserrat'] font-semibold tracking-wider uppercase px-3 py-1 rounded-full" style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}>
+                        Most Requested
+                      </span>
+                    </div>
+                  )}
+                  <div className="relative overflow-hidden" style={{ height: "150px" }}>
+                    <img src={svc.image} alt={svc.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0" style={{ background: svc.featured ? "rgba(107, 63, 160, 0.55)" : "rgba(26, 26, 26, 0.4)" }} />
+                    <div className="absolute bottom-3 left-5">
+                      <p className="font-['Montserrat'] font-bold text-white text-base leading-tight">{svc.title}</p>
+                      <p className="font-['Montserrat'] font-semibold text-xs mt-0.5" style={{ color: "#D4AF37" }}>{svc.price}</p>
+                    </div>
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <p className="text-[#6B7280] text-sm font-['Open_Sans'] leading-relaxed mb-3">{svc.tagline}</p>
+                    <p className="text-xs font-['Montserrat'] font-semibold uppercase tracking-wider mb-2" style={{ color: "#D4AF37" }}>Includes</p>
+                    <ul className="space-y-1.5 mb-5 flex-1">
+                      {svc.includes.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle2 size={12} className="mt-0.5 flex-shrink-0" style={{ color: "#6B3FA0" }} />
+                          <span className="text-[#1A1A1A] text-xs font-['Open_Sans']">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {svc.isExternal ? (
+                      <a href={svc.href} className="btn-primary text-sm py-2.5 w-full justify-center">
+                        {svc.cta}
+                      </a>
+                    ) : (
+                      <Link href={svc.href} className="btn-secondary text-sm py-2.5 w-full justify-center">
+                        {svc.cta}
                       </Link>
-                    </div>
+                    )}
+                  </div>
+                </div>
+              </FadeSection>
+            ))}
+          </div>
 
-                    {/* Image */}
-                    <div className="lg:col-span-4 hidden lg:block">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover"
-                        style={{ minHeight: "260px" }}
-                      />
+          {/* Row 2 — 2 cards centered */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto items-stretch">
+            {services.slice(3).map((svc, i) => (
+              <FadeSection key={i} delay={i * 80}>
+                <div
+                  className="rounded-lg overflow-hidden h-full flex flex-col card-hover"
+                  style={{ border: "1px solid #e8e8e8", backgroundColor: "#FFFFFF" }}
+                >
+                  <div className="relative overflow-hidden" style={{ height: "130px" }}>
+                    <img src={svc.image} alt={svc.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0" style={{ background: "rgba(26, 26, 26, 0.4)" }} />
+                    <div className="absolute bottom-3 left-5">
+                      <p className="font-['Montserrat'] font-bold text-white text-base leading-tight">{svc.title}</p>
+                      <p className="font-['Montserrat'] font-semibold text-xs mt-0.5" style={{ color: "#D4AF37" }}>{svc.price}</p>
                     </div>
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <p className="text-[#6B7280] text-sm font-['Open_Sans'] leading-relaxed mb-3">{svc.tagline}</p>
+                    <ul className="space-y-1.5 mb-5 flex-1">
+                      {svc.includes.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle2 size={12} className="mt-0.5 flex-shrink-0" style={{ color: "#6B3FA0" }} />
+                          <span className="text-[#1A1A1A] text-xs font-['Open_Sans']">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href={svc.href} className="btn-secondary text-sm py-2.5 w-full justify-center">
+                      {svc.cta}
+                    </Link>
                   </div>
                 </div>
               </FadeSection>
@@ -217,38 +280,54 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Retainers */}
+      {/* Retainers — 3 cards same height */}
       <section className="section-white">
         <div className="container">
           <FadeSection>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <GoldEyebrow>Ongoing Support</GoldEyebrow>
-              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-3" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.02em" }}>
-                Monthly Retainer Options
+              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-3" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}>
+                Monthly Retainer Plans
               </h2>
-              <p className="text-[#6B7280] font-['Open_Sans']">Stay visible. Stay competitive. Stay supported.</p>
+              <p className="text-[#6B7280] font-['Open_Sans'] max-w-xl mx-auto">
+                For businesses that need consistent, ongoing support to maintain and grow their visibility and systems.
+              </p>
             </div>
           </FadeSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {retainers.map((r, i) => (
-              <FadeSection key={i} delay={i * 100}>
+              <FadeSection key={i} delay={i * 80}>
                 <div
-                  className="rounded-lg p-8 text-center card-hover"
-                  style={{ border: i === 2 ? "2px solid #6B3FA0" : "1px solid #e8e8e8", backgroundColor: i === 2 ? "#6B3FA0" : "#FFFFFF" }}
+                  className="rounded-lg p-8 h-full flex flex-col card-hover"
+                  style={{
+                    border: r.featured ? "2px solid #6B3FA0" : "1px solid #e8e8e8",
+                    backgroundColor: r.featured ? "#6B3FA0" : "#FFFFFF",
+                  }}
                 >
-                  {i === 2 && (
-                    <div className="mb-3">
-                      <span className="text-xs font-['Montserrat'] font-600 tracking-wider uppercase px-3 py-1 rounded-full" style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}>
-                        Crown Level
+                  {r.featured && (
+                    <div className="mb-4">
+                      <span className="text-xs font-['Montserrat'] font-semibold tracking-wider uppercase px-3 py-1 rounded-full" style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}>
+                        Best Value
                       </span>
                     </div>
                   )}
-                  <h3 className={`font-['Montserrat'] font-700 text-xl mb-2 ${i === 2 ? "text-white" : "text-[#1A1A1A]"}`}>{r.name}</h3>
-                  <p className="font-['Montserrat'] font-700 text-3xl mb-4" style={{ color: i === 2 ? "#D4AF37" : "#6B3FA0" }}>{r.price}</p>
-                  <p className={`text-sm font-['Open_Sans'] leading-relaxed mb-6 ${i === 2 ? "text-purple-200" : "text-[#6B7280]"}`}>{r.desc}</p>
-                  <Link href="/work-with-us" className={i === 2 ? "btn-white" : "btn-secondary"}>
-                    Get Started
+                  <h3 className={`font-['Montserrat'] font-bold text-xl mb-2 ${r.featured ? "text-white" : "text-[#1A1A1A]"}`}>{r.name}</h3>
+                  <div className="flex items-baseline gap-1 mb-4">
+                    <span className={`font-['Montserrat'] font-bold text-3xl ${r.featured ? "text-white" : "text-[#1A1A1A]"}`}>{r.price}</span>
+                    <span className={`text-sm font-['Open_Sans'] ${r.featured ? "text-purple-200" : "text-[#6B7280]"}`}>{r.period}</span>
+                  </div>
+                  <p className={`text-sm mb-6 font-['Open_Sans'] leading-relaxed ${r.featured ? "text-purple-200" : "text-[#6B7280]"}`}>{r.desc}</p>
+                  <ul className="space-y-2.5 mb-8 flex-1">
+                    {r.includes.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 size={14} className="mt-0.5 flex-shrink-0" style={{ color: r.featured ? "#D4AF37" : "#6B3FA0" }} />
+                        <span className={`text-sm font-['Open_Sans'] ${r.featured ? "text-purple-100" : "text-[#1A1A1A]"}`}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/work-with-us" className={r.featured ? "btn-white" : "btn-secondary"}>
+                    Apply for This Plan
                   </Link>
                 </div>
               </FadeSection>
@@ -258,18 +337,28 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="section-purple">
-        <div className="container text-center">
+      <section className="section-purple relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10" style={{ background: "#D4AF37", filter: "blur(100px)" }} />
+        </div>
+        <div className="container relative z-10 text-center">
           <FadeSection>
-            <GoldEyebrow>Next Step</GoldEyebrow>
+            <GoldEyebrow>Get Started</GoldEyebrow>
             <h2 className="font-['Montserrat'] font-bold text-white mb-4" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.02em" }}>
               Not sure which service is right for you?
             </h2>
-            <p className="text-purple-200 mb-8 font-['Open_Sans'] text-lg">Start with a free visibility scan and we will point you in the right direction.</p>
-            <Link href="/contact" className="btn-white">
-              Start Your Free Visibility Scan
-              <ArrowRight size={16} />
-            </Link>
+            <p className="text-purple-200 mb-8 font-['Open_Sans'] text-lg max-w-xl mx-auto">
+              Start with a free visibility scan. In 30 minutes, we will identify your biggest gaps and recommend the right path forward.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <a href={VISIBILITY_SCAN_URL} className="btn-white">
+                <span>Book Free Visibility Scan</span>
+                <ArrowRight size={16} />
+              </a>
+              <Link href="/work-with-us" className="btn-gold">
+                Work With Us
+              </Link>
+            </div>
           </FadeSection>
         </div>
       </section>

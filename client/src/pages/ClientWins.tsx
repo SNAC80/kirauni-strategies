@@ -75,11 +75,14 @@ const wins = [
   },
 ];
 
+const VISIBILITY_SCAN_URL = "/visibility-scan";
+
 export default function ClientWins() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-white pt-16">
+      <section className="section-white pt-8">
         <div className="container">
           <div className="max-w-3xl">
             <FadeSection>
@@ -164,10 +167,10 @@ export default function ClientWins() {
             <p className="text-purple-200 mb-8 font-['Open_Sans'] text-lg max-w-xl mx-auto">
               Every client win started with a single conversation. Start yours with a free visibility scan.
             </p>
-            <Link href="/contact" className="btn-white">
+            <a href={VISIBILITY_SCAN_URL} className="btn-white">
               Start Your Free Visibility Scan
               <ArrowRight size={16} />
-            </Link>
+            </a>
           </FadeSection>
         </div>
       </section>

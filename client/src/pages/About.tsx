@@ -1,14 +1,18 @@
 /**
  * Kirauni Strategies — About Page
  * Design: Crown Authority — founder story, brand values, cultural grounding
+ * Fix: First hero image replaced with new founder headshot, CTAs → Cal.com
  */
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import { ArrowRight } from "lucide-react";
 
+// New founder headshot (Untitleddesign(8).png — uploaded)
+const FOUNDER_HEADSHOT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/founder-headshot_a7977ccf.png";
+// Original KSCell image used in the origin section
 const KCELL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/KSCell(1)_aab683bb.png";
-const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/Untitleddesign(10)_290db42d.png";
+const VISIBILITY_SCAN_URL = "/visibility-scan";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const [visible, setVisible] = useState(false);
@@ -41,8 +45,8 @@ const values = [
 export default function About() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="section-white pt-16">
+      {/* Hero — new founder headshot */}
+      <section className="section-white pt-8">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
@@ -51,21 +55,30 @@ export default function About() {
                 <h1 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-6" style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)", letterSpacing: "-0.02em" }}>
                   Built for businesses ready to be seen, understood, and structured for growth.
                 </h1>
-                <p className="text-[#6B7280] text-lg leading-relaxed font-['Open_Sans']">
-                  Led by Shavonne Ambonisye-Clifton, Founder and Chief Strategist, Kirauni combines technical depth, cultural authority, and boutique strategic care.
+                <p className="text-[#6B7280] text-lg leading-relaxed font-['Open_Sans'] mb-8">
+                  Led by Shavonne Ambonisye-Clifton, Founder and Chief Strategist, Kirauni combines technical depth, cultural authority, and boutique strategic care to help Houston small businesses grow with intention.
                 </p>
+                <div className="flex flex-wrap gap-4">
+                  <a href={VISIBILITY_SCAN_URL} className="btn-primary">
+                    <span>Book Free Visibility Scan</span>
+                    <ArrowRight size={16} />
+                  </a>
+                  <Link href="/work-with-us" className="btn-secondary">
+                    Work With Us
+                  </Link>
+                </div>
               </FadeSection>
             </div>
             <div className="lg:col-span-5">
               <FadeSection delay={150}>
                 <div className="relative">
                   <img
-                    src={HERO_IMAGE}
-                    alt="Kirauni Strategies consultation"
+                    src={FOUNDER_HEADSHOT}
+                    alt="Shavonne Ambonisye-Clifton — Founder, Kirauni Strategies"
                     className="w-full rounded-lg object-cover shadow-xl"
-                    style={{ maxHeight: "420px", objectPosition: "center top" }}
+                    style={{ maxHeight: "500px", objectPosition: "center top" }}
                   />
-                  <div className="absolute -bottom-3 -right-3 w-full h-full rounded-lg pointer-events-none" style={{ border: "2px solid #D4AF37", opacity: 0.25 }} />
+                  <div className="absolute -bottom-3 -right-3 w-full h-full rounded-lg pointer-events-none" style={{ border: "2px solid #D4AF37", opacity: 0.3 }} />
                 </div>
               </FadeSection>
             </div>
@@ -178,7 +191,7 @@ export default function About() {
               <FadeSection key={i} delay={i * 80}>
                 <div className="bg-white rounded-lg p-7 h-full card-hover" style={{ border: "1px solid #e8e8e8" }}>
                   <div className="w-8 h-0.5 mb-4" style={{ backgroundColor: "#D4AF37" }} />
-                  <h3 className="font-['Montserrat'] font-700 text-[#1A1A1A] text-lg mb-3">{v.title}</h3>
+                  <h3 className="font-['Montserrat'] font-bold text-[#1A1A1A] text-lg mb-3">{v.title}</h3>
                   <p className="text-[#6B7280] text-sm leading-relaxed font-['Open_Sans']">{v.desc}</p>
                 </div>
               </FadeSection>
@@ -200,10 +213,10 @@ export default function About() {
                 Start with a free visibility scan and see exactly what is missing — and how to fix it.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/contact" className="btn-primary">
-                  <span>Start Your Free Visibility Scan</span>
+                <a href={VISIBILITY_SCAN_URL} className="btn-primary">
+                  <span>Book Free Visibility Scan</span>
                   <ArrowRight size={16} />
-                </Link>
+                </a>
                 <Link href="/work-with-us" className="btn-secondary">
                   Work With Us
                 </Link>

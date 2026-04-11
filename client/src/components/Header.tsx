@@ -1,14 +1,15 @@
 /**
  * Kirauni Strategies — Header Component
- * Design: Crown Authority — sticky light header, logo left, nav center/right, CTA far right
+ * Design: Crown Authority — sticky light header, larger logo, nav center/right, CTA far right
  * Colors: White bg, Purple primary, Gold accents
+ * Fix: Larger logo (h-12 lg:h-16), CTA → Cal.com visibility audit, header height increased
  */
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/PrimaryLogo[FullLockup]-1_01882a6e.webp";
-const ICON_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/IconMark-1(1)_4478680c.png";
+
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -33,29 +34,31 @@ export default function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
+    // Scroll to top on every route change
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white shadow-sm border-b border-gray-100"
-          : "bg-white/95 backdrop-blur-sm border-b border-gray-100"
+          ? "bg-white shadow-md border-b border-gray-100"
+          : "bg-white/97 backdrop-blur-sm border-b border-gray-100"
       }`}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center gap-2">
+        <div className="flex items-center justify-between h-20 lg:h-24">
+          {/* Logo — larger */}
+          <Link href="/" className="flex-shrink-0 flex items-center">
             <img
               src={LOGO_URL}
               alt="Kirauni Strategies"
-              className="h-10 lg:h-12 w-auto object-contain"
+              className="h-12 lg:h-16 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -69,8 +72,11 @@ export default function Header() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="btn-primary hidden lg:inline-flex text-sm py-2.5 px-5">
-              <span>Book Free AI Visibility Scan</span>
+            <Link
+              href="/visibility-scan"
+              className="btn-primary hidden lg:inline-flex text-sm py-2.5 px-5"
+            >
+              <span>Book Free Visibility Scan</span>
             </Link>
             <button
               className="xl:hidden p-2 rounded-md text-gray-700 hover:text-[#6B3FA0] hover:bg-gray-50 transition-colors"
@@ -91,7 +97,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`py-3 px-2 font-['Montserrat'] font-500 text-sm border-b border-gray-50 transition-colors ${
+                className={`py-3 px-2 font-['Montserrat'] font-medium text-sm border-b border-gray-50 transition-colors ${
                   location === link.href
                     ? "text-[#6B3FA0] font-semibold"
                     : "text-[#1A1A1A] hover:text-[#6B3FA0]"
@@ -100,8 +106,11 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" className="btn-primary mt-4 text-center">
-              <span>Book Free AI Visibility Scan</span>
+            <Link
+              href="/visibility-scan"
+              className="btn-primary mt-4 text-center"
+            >
+              <span>Book Free Visibility Scan</span>
             </Link>
           </nav>
         </div>

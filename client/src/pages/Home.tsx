@@ -7,7 +7,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
-import { ArrowRight, CheckCircle2, ChevronRight, Search, Lightbulb, Settings, TrendingUp, Eye } from "lucide-react";
+import { ArrowRight, CheckCircle2, Search, Lightbulb, Settings, TrendingUp, Eye } from "lucide-react";
+
+const VISIBILITY_SCAN_URL = "/visibility-scan";
+const STRATEGY_AUDIT_URL = "/strategy-audit";
 
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/Untitleddesign(10)_290db42d.png";
 const KCELL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/KSCell(1)_aab683bb.png";
@@ -143,7 +146,7 @@ export default function Home() {
                   transition: "opacity 0.5s ease-out 360ms, transform 0.5s ease-out 360ms",
                 }}
               >
-                <Link href="/contact" className="btn-primary">
+                <Link href={VISIBILITY_SCAN_URL} className="btn-primary">
                   <span>Start Your Free Visibility Scan</span>
                   <ArrowRight size={16} />
                 </Link>
@@ -451,15 +454,14 @@ export default function Home() {
                   { num: "05", title: "Optimization", desc: "Improve and scale" },
                 ].map((step, i) => (
                   <FadeSection key={i} delay={i * 80}>
-                    <div className="flex items-center gap-5 p-5 rounded-lg bg-white card-hover" style={{ border: "1px solid #e8e8e8" }}>
-                      <span className="font-['Montserrat'] font-700 text-3xl flex-shrink-0" style={{ color: "rgba(107, 63, 160, 0.15)", minWidth: "3rem" }}>
-                        {step.num}
-                      </span>
+                    <div className="flex items-center gap-5 p-5 rounded-lg bg-white" style={{ border: "1px solid #e8e8e8" }}>
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(107, 63, 160, 0.08)" }}>
+                        <span className="font-['Montserrat'] font-700 text-sm" style={{ color: "#6B3FA0" }}>{step.num}</span>
+                      </div>
                       <div className="flex-1">
                         <h4 className="font-['Montserrat'] font-600 text-[#1A1A1A] text-base">{step.title}</h4>
                         <p className="text-[#6B7280] text-sm font-['Open_Sans']">{step.desc}</p>
                       </div>
-                      <ChevronRight size={18} style={{ color: "#6B3FA0" }} className="flex-shrink-0" />
                     </div>
                   </FadeSection>
                 ))}
@@ -562,13 +564,14 @@ export default function Home() {
           </FadeSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {[
+              {[
               {
                 title: "Free Visibility Scan",
                 micro: "See what is missing — and exactly how to fix it.",
                 bullets: ["3 quick wins", "Visibility gaps", "Clear next steps"],
                 cta: "Start Your Free Visibility Scan",
-                href: "/contact",
+                href: VISIBILITY_SCAN_URL,
+                isExternal: false,
                 featured: false,
               },
               {
@@ -576,7 +579,8 @@ export default function Home() {
                 micro: "A deeper look at what is limiting your growth.",
                 bullets: ["Deep dive analysis", "Messaging and positioning", "Action plan"],
                 cta: "Book Your Strategy Visibility Audit",
-                href: "/work-with-us",
+                href: STRATEGY_AUDIT_URL,
+                isExternal: false,
                 featured: true,
               },
               {
@@ -585,6 +589,7 @@ export default function Home() {
                 bullets: ["Workflow automation", "Lead capture and follow-up", "Scalable systems"],
                 cta: "Apply to Work Together",
                 href: "/work-with-us",
+                isExternal: false,
                 featured: false,
               },
             ].map((offer, i) => (
@@ -617,10 +622,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href={offer.href}
-                    className={offer.featured ? "btn-white" : "btn-secondary"}
-                  >
+                  <Link href={offer.href} className={offer.featured ? "btn-white" : "btn-secondary"}>
                     {offer.cta}
                   </Link>
                 </div>
@@ -702,12 +704,13 @@ export default function Home() {
           <FadeSection>
             <GoldEyebrow>Ready to Begin?</GoldEyebrow>
             <h2 className="font-['Montserrat'] font-bold text-white mb-4" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", letterSpacing: "-0.02em" }}>
-              Not sure where to start?<br />Begin with a Free Visibility Scan.
+              Schedule Your Free Visibility Scan<br />
+              <span style={{ color: "#D4AF37" }}>and start building with clarity.</span>
             </h2>
             <p className="text-purple-200 mb-8 font-['Open_Sans'] text-lg">
               hello@kiraunistrategies.com &nbsp;·&nbsp; 832-608-3495
             </p>
-            <Link href="/contact" className="btn-white">
+            <Link href={VISIBILITY_SCAN_URL} className="btn-white">
               Start Your Free Visibility Scan
               <ArrowRight size={16} />
             </Link>

@@ -1,11 +1,14 @@
 /**
  * Kirauni Strategies — Work With Us Page
- * Design: Crown Authority — application form, three CTA paths
+ * Design: Crown Authority — three clear paths, each navigates to its own dedicated page
+ * Path 1: Free Visibility Scan → /visibility-scan (Cal.com embed)
+ * Path 2: Strategy + Visibility Audit → /strategy-audit (Cal.com embed)
+ * Path 3: Systems + Implementation → /apply (Application form page)
  */
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Zap, BarChart2, Settings } from "lucide-react";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const [visible, setVisible] = useState(false);
@@ -23,111 +26,154 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
   );
 }
 
-function GoldEyebrow({ children }: { children: React.ReactNode }) {
-  return <div className="gold-eyebrow">{children}</div>;
-}
+const paths = [
+  {
+    number: "01",
+    badge: "Complimentary",
+    badgeColor: "#059669",
+    icon: <Zap size={24} />,
+    title: "Free Visibility Scan",
+    subtitle: "See what is missing — and exactly how to fix it.",
+    description: "A quick but powerful look at your current visibility. No commitment required. In 30 minutes, you will walk away with 3 quick wins and a clear picture of your biggest gaps.",
+    includes: ["3 quick wins identified", "Visibility gaps mapped", "Clear next steps outlined", "No pitch, no pressure"],
+    cta: "Book Free Visibility Scan",
+    href: "/visibility-scan",
+    highlight: false,
+  },
+  {
+    number: "02",
+    badge: "Most Popular",
+    badgeColor: "#D4AF37",
+    icon: <BarChart2 size={24} />,
+    title: "Strategy + Visibility Audit",
+    subtitle: "A deeper look at what is limiting your growth.",
+    description: "Comprehensive analysis with a prioritized action plan you can execute immediately. A custom 30-day roadmap is prepared before your session.",
+    includes: ["Deep dive analysis", "Messaging and positioning review", "Prioritized action plan", "Custom 30-day roadmap"],
+    cta: "Book Your Strategy Audit",
+    href: "/strategy-audit",
+    highlight: true,
+  },
+  {
+    number: "03",
+    badge: "Full Implementation",
+    badgeColor: "#6B3FA0",
+    icon: <Settings size={24} />,
+    title: "Systems + Implementation",
+    subtitle: "Build the structure behind the visibility.",
+    description: "Full implementation support — we build and install the systems for you. This is for businesses ready to invest in long-term, scalable infrastructure.",
+    includes: ["Workflow automation built", "Lead capture and follow-up", "Scalable systems installed", "Ongoing support available"],
+    cta: "Apply to Work Together",
+    href: "/apply",
+    highlight: false,
+  },
+];
 
 export default function WorkWithUs() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "", email: "", phone: "", businessName: "", website: "",
-    industry: "", challenge: "", service: "", outcome: "", nextStep: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="section-white pt-16">
+      {/* ===== PAGE HERO ===== */}
+      <section className="bg-white border-b border-gray-100 py-16">
         <div className="container">
-          <div className="max-w-3xl">
-            <FadeSection>
-              <GoldEyebrow>Get Started</GoldEyebrow>
-              <h1 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-6" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.02em" }}>
-                Ready for strategy with structure?
-              </h1>
-              <p className="text-[#6B7280] text-lg leading-relaxed font-['Open_Sans']">
-                Kirauni is built for businesses that are ready to move with clarity, not chaos. If you are ready to strengthen your visibility, sharpen your positioning, and build systems that support growth, this is where we begin.
-              </p>
-            </FadeSection>
-          </div>
+          <div className="gold-eyebrow mb-4">Get Started</div>
+          <h1
+            className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-4"
+            style={{ fontSize: "clamp(2.25rem, 5vw, 3.5rem)", letterSpacing: "-0.02em" }}
+          >
+            Ready for strategy{" "}
+            <span style={{ color: "#6B3FA0" }}>with structure?</span>
+          </h1>
+          <p className="text-[#6B7280] text-lg leading-relaxed max-w-2xl font-['Open_Sans']">
+            Kirauni is built for businesses that are ready to move with clarity, not chaos. Choose the path that matches where you are right now — each one leads somewhere specific.
+          </p>
         </div>
       </section>
 
-      {/* Three CTA paths */}
+      {/* ===== THREE PATHS ===== */}
       <section className="section-gray">
         <div className="container">
-          <FadeSection>
-            <div className="text-center mb-10">
-              <GoldEyebrow>Choose Your Path</GoldEyebrow>
-              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A]" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}>
-                Simple ways to get started
-              </h2>
-            </div>
-          </FadeSection>
+          <div className="text-center mb-12">
+            <div className="gold-eyebrow mb-3">Choose Your Path</div>
+            <h2
+              className="font-['Montserrat'] font-bold text-[#1A1A1A]"
+              style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", letterSpacing: "-0.02em" }}
+            >
+              Three ways to work with Kirauni
+            </h2>
+            <p className="text-[#6B7280] mt-3 font-['Open_Sans'] max-w-xl mx-auto">
+              Click the button on the card that matches where you are right now. Each path opens its own dedicated page.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {[
-              {
-                num: "01",
-                title: "Free Visibility Scan",
-                desc: "See what is missing — and exactly how to fix it. No commitment required.",
-                bullets: ["3 quick wins identified", "Visibility gaps mapped", "Clear next steps outlined"],
-                cta: "Start Your Free Visibility Scan",
-                href: "/contact",
-                featured: false,
-              },
-              {
-                num: "02",
-                title: "Strategy + Visibility Audit",
-                desc: "A deeper look at what is limiting your growth. Comprehensive analysis with an action plan.",
-                bullets: ["Deep dive analysis", "Messaging and positioning review", "Prioritized action plan"],
-                cta: "Book Your Strategy Visibility Audit",
-                href: "/contact",
-                featured: true,
-              },
-              {
-                num: "03",
-                title: "Systems + Implementation",
-                desc: "Build the structure behind the visibility. Full implementation support.",
-                bullets: ["Workflow automation", "Lead capture and follow-up", "Scalable systems built"],
-                cta: "Apply to Work Together",
-                href: "#application",
-                featured: false,
-              },
-            ].map((path, i) => (
-              <FadeSection key={i} delay={i * 100}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {paths.map((path, i) => (
+              <FadeSection key={path.number} delay={i * 100}>
                 <div
-                  className="rounded-lg p-8 h-full flex flex-col card-hover"
+                  className="bg-white rounded-xl flex flex-col overflow-hidden h-full"
                   style={{
-                    border: path.featured ? "2px solid #6B3FA0" : "1px solid #e8e8e8",
-                    backgroundColor: path.featured ? "#6B3FA0" : "#FFFFFF",
+                    border: path.highlight ? "2px solid #6B3FA0" : "1px solid #e5e7eb",
+                    boxShadow: path.highlight ? "0 8px 32px rgba(107,63,160,0.12)" : "0 2px 8px rgba(0,0,0,0.04)",
                   }}
                 >
-                  <span className="font-['Montserrat'] font-700 text-3xl mb-4" style={{ color: path.featured ? "rgba(255,255,255,0.2)" : "rgba(107, 63, 160, 0.15)" }}>
-                    {path.num}
-                  </span>
-                  <h3 className={`font-['Montserrat'] font-700 text-xl mb-3 ${path.featured ? "text-white" : "text-[#1A1A1A]"}`}>{path.title}</h3>
-                  <p className={`text-sm mb-5 font-['Open_Sans'] leading-relaxed ${path.featured ? "text-purple-200" : "text-[#6B7280]"}`}>{path.desc}</p>
-                  <ul className="space-y-2 mb-8 flex-1">
-                    {path.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2">
-                        <CheckCircle2 size={14} className="mt-0.5 flex-shrink-0" style={{ color: path.featured ? "#D4AF37" : "#6B3FA0" }} />
-                        <span className={`text-sm font-['Open_Sans'] ${path.featured ? "text-purple-100" : "text-[#1A1A1A]"}`}>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a href={path.href} className={path.featured ? "btn-white" : "btn-secondary"}>
-                    {path.cta}
-                  </a>
+                  {/* Card top */}
+                  <div className="px-6 pt-6 pb-5" style={{ borderBottom: "1px solid #f3f4f6" }}>
+                    <div className="flex items-start justify-between mb-4">
+                      <div
+                        className="w-11 h-11 rounded-lg flex items-center justify-center"
+                        style={{ backgroundColor: path.highlight ? "#6B3FA0" : "#f3f0f8", color: path.highlight ? "white" : "#6B3FA0" }}
+                      >
+                        {path.icon}
+                      </div>
+                      <span
+                        className="text-xs font-['Montserrat'] font-semibold px-3 py-1 rounded-full"
+                        style={{
+                          backgroundColor: `${path.badgeColor}18`,
+                          color: path.badgeColor,
+                          border: `1px solid ${path.badgeColor}40`,
+                        }}
+                      >
+                        {path.badge}
+                      </span>
+                    </div>
+                    <p className="font-['Montserrat'] font-bold text-xs tracking-widest uppercase mb-2" style={{ color: "#D4AF37" }}>
+                      {path.number}
+                    </p>
+                    <h3 className="font-['Montserrat'] font-bold text-[#1A1A1A] text-xl mb-1">{path.title}</h3>
+                    <p className="text-sm font-['Open_Sans'] font-semibold mb-3" style={{ color: "#6B3FA0" }}>{path.subtitle}</p>
+                    <p className="text-sm text-[#6B7280] font-['Open_Sans'] leading-relaxed">{path.description}</p>
+                  </div>
+
+                  {/* Includes */}
+                  <div className="px-6 py-5 flex-1">
+                    <p className="text-xs font-['Montserrat'] font-semibold tracking-wider uppercase text-[#9CA3AF] mb-3">What's included</p>
+                    <ul className="space-y-2">
+                      {path.includes.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#D4AF37" }} />
+                          <span className="text-sm font-['Open_Sans'] text-[#374151]">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="px-6 pb-6">
+                    <Link
+                      href={path.href}
+                      className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-lg font-['Montserrat'] font-semibold text-sm transition-all duration-200 hover:opacity-90"
+                      style={
+                        path.highlight
+                          ? { backgroundColor: "#6B3FA0", color: "white" }
+                          : { backgroundColor: "#f3f0f8", color: "#6B3FA0", border: "1px solid #6B3FA0" }
+                      }
+                    >
+                      {path.cta}
+                      <ArrowRight size={15} />
+                    </Link>
+                  </div>
                 </div>
               </FadeSection>
             ))}
@@ -135,104 +181,17 @@ export default function WorkWithUs() {
         </div>
       </section>
 
-      {/* Application Form */}
-      <section id="application" className="section-white">
-        <div className="container">
-          <div className="max-w-2xl mx-auto">
-            <FadeSection>
-              <div className="text-center mb-10">
-                <GoldEyebrow>Application</GoldEyebrow>
-                <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-3" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}>
-                  Apply to Work Together
-                </h2>
-                <p className="text-[#6B7280] font-['Open_Sans']">
-                  Complete the application below to determine if we are a strong fit for strategy and implementation.
-                </p>
-              </div>
-            </FadeSection>
-
-            {submitted ? (
-              <FadeSection>
-                <div className="rounded-lg p-10 text-center" style={{ backgroundColor: "#F5F5F5", border: "1px solid #e8e8e8" }}>
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: "rgba(107, 63, 160, 0.1)" }}>
-                    <CheckCircle2 size={28} style={{ color: "#6B3FA0" }} />
-                  </div>
-                  <h3 className="font-['Montserrat'] font-700 text-[#1A1A1A] text-xl mb-3">Application Received</h3>
-                  <p className="text-[#6B7280] font-['Open_Sans']">
-                    Thank you. Your application has been received. A response will be sent to your inbox as soon as possible.
-                  </p>
-                </div>
-              </FadeSection>
-            ) : (
-              <FadeSection delay={100}>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="form-label">Name *</label>
-                      <input name="name" value={form.name} onChange={handleChange} required className="form-input" placeholder="Your full name" />
-                    </div>
-                    <div>
-                      <label className="form-label">Email *</label>
-                      <input name="email" type="email" value={form.email} onChange={handleChange} required className="form-input" placeholder="your@email.com" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="form-label">Phone</label>
-                      <input name="phone" value={form.phone} onChange={handleChange} className="form-input" placeholder="(832) 000-0000" />
-                    </div>
-                    <div>
-                      <label className="form-label">Business Name *</label>
-                      <input name="businessName" value={form.businessName} onChange={handleChange} required className="form-input" placeholder="Your business name" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="form-label">Website</label>
-                      <input name="website" value={form.website} onChange={handleChange} className="form-input" placeholder="https://yourbusiness.com" />
-                    </div>
-                    <div>
-                      <label className="form-label">Industry</label>
-                      <input name="industry" value={form.industry} onChange={handleChange} className="form-input" placeholder="e.g., Food & Beverage, Health, Retail" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="form-label">Current Challenge *</label>
-                    <textarea name="challenge" value={form.challenge} onChange={handleChange} required rows={3} className="form-input resize-none" placeholder="What is your biggest visibility or systems challenge right now?" />
-                  </div>
-                  <div>
-                    <label className="form-label">Which service are you most interested in?</label>
-                    <select name="service" value={form.service} onChange={handleChange} className="form-input">
-                      <option value="">Select a service</option>
-                      <option value="free-scan">Free Visibility Scan</option>
-                      <option value="audit">Strategy + Visibility Audit</option>
-                      <option value="optimization">AI Visibility Optimization</option>
-                      <option value="automation">AI Visibility + Automation System</option>
-                      <option value="retainer">Ongoing Growth Support (Retainer)</option>
-                      <option value="brand">Brand Foundation Sprint</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="form-label">What outcome are you trying to create?</label>
-                    <textarea name="outcome" value={form.outcome} onChange={handleChange} rows={3} className="form-input resize-none" placeholder="Describe the result you are working toward" />
-                  </div>
-                  <div>
-                    <label className="form-label">Preferred next step</label>
-                    <select name="nextStep" value={form.nextStep} onChange={handleChange} className="form-input">
-                      <option value="">Select your preference</option>
-                      <option value="call">Schedule a discovery call</option>
-                      <option value="email">Receive information by email</option>
-                      <option value="scan">Start with a free visibility scan</option>
-                    </select>
-                  </div>
-                  <button type="submit" className="btn-primary w-full justify-center">
-                    <span>Submit Application</span>
-                    <ArrowRight size={16} />
-                  </button>
-                </form>
-              </FadeSection>
-            )}
-          </div>
+      {/* ===== NOT SURE STRIP ===== */}
+      <section className="py-14" style={{ backgroundColor: "#1E0A35" }}>
+        <div className="container text-center">
+          <p className="font-['Open_Sans'] text-purple-300 mb-2">Not sure where to start?</p>
+          <h3 className="font-['Montserrat'] font-bold text-white text-xl mb-5">
+            The Free Visibility Scan is the best first step — and it costs nothing.
+          </h3>
+          <Link href="/visibility-scan" className="inline-flex items-center gap-2 btn-gold">
+            Book Free Visibility Scan
+            <ArrowRight size={15} />
+          </Link>
         </div>
       </section>
     </Layout>

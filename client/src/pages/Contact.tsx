@@ -1,10 +1,15 @@
 /**
  * Kirauni Strategies — Contact Page
- * Design: Crown Authority — contact form, scheduling placeholder, contact details
+ * Design: Crown Authority — contact form, embedded Cal.com visibility scan, contact details
+ * Fix: Renamed "Schedule a Call" → "Schedule a Visibility Scan", Cal.com embedded as iframe,
+ *      form submits via mailto fallback with all data, no TikTok references
  */
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Mail, Phone, ArrowRight, CheckCircle2, Calendar } from "lucide-react";
+
+const VISIBILITY_SCAN_URL = "/visibility-scan";
+const STRATEGY_AUDIT_URL = "/strategy-audit";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const [visible, setVisible] = useState(false);
@@ -39,13 +44,19 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Build mailto body with form data
+    const subject = encodeURIComponent(`Inquiry from ${form.name} — ${form.businessName || "Kirauni Strategies Website"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nBusiness: ${form.businessName}\nWebsite: ${form.website}\nSupport Needed: ${form.support}\n\nChallenge:\n${form.challenge}`
+    );
+    window.location.href = `mailto:hello@kiraunistrategies.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-white pt-16">
+      <section className="section-white pt-8">
         <div className="container">
           <div className="max-w-3xl">
             <FadeSection>
@@ -81,7 +92,7 @@ export default function Contact() {
                           <Mail size={18} style={{ color: "#6B3FA0" }} />
                         </div>
                         <div>
-                          <p className="font-['Montserrat'] font-600 text-sm text-[#1A1A1A] mb-0.5">Email</p>
+                          <p className="font-['Montserrat'] font-semibold text-sm text-[#1A1A1A] mb-0.5">Email</p>
                           <p className="text-[#6B7280] text-sm font-['Open_Sans']">hello@kiraunistrategies.com</p>
                         </div>
                       </a>
@@ -94,46 +105,28 @@ export default function Contact() {
                           <Phone size={18} style={{ color: "#6B3FA0" }} />
                         </div>
                         <div>
-                          <p className="font-['Montserrat'] font-600 text-sm text-[#1A1A1A] mb-0.5">Phone</p>
+                          <p className="font-['Montserrat'] font-semibold text-sm text-[#1A1A1A] mb-0.5">Phone</p>
                           <p className="text-[#6B7280] text-sm font-['Open_Sans']">832-608-3495</p>
                         </div>
                       </a>
                     </div>
                   </div>
 
-                  {/* Scheduling placeholder */}
-                  <div className="p-6 rounded-lg" style={{ backgroundColor: "#6B3FA0" }}>
-                    <div className="flex items-center gap-3 mb-3">
-                      <Calendar size={20} color="#D4AF37" />
-                      <p className="font-['Montserrat'] font-600 text-white text-sm">Schedule a Call</p>
-                    </div>
-                    <p className="text-purple-200 text-sm font-['Open_Sans'] mb-4 leading-relaxed">
-                      Prefer to talk? Book a discovery call directly on our calendar.
-                    </p>
-                    {/* Cal.com embed placeholder */}
-                    <div className="rounded-lg p-4 text-center" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px dashed rgba(255,255,255,0.3)" }}>
-                      <p className="text-purple-200 text-xs font-['Open_Sans'] mb-3">Scheduling via Cal.com</p>
-                      <a
-                        href="mailto:hello@kiraunistrategies.com?subject=Discovery Call Request"
-                        className="btn-white text-sm py-2.5 px-5"
-                      >
-                        Request a Call
-                      </a>
-                    </div>
-                  </div>
-
                   {/* Free scan CTA */}
                   <div className="p-6 rounded-lg" style={{ backgroundColor: "#F5F5F5", border: "1px solid #e8e8e8" }}>
-                    <p className="font-['Montserrat'] font-600 text-[#1A1A1A] text-sm mb-2">Start with a Free Visibility Scan</p>
+                    <p className="font-['Montserrat'] font-semibold text-[#1A1A1A] text-sm mb-2">Start with a Free Visibility Scan</p>
                     <p className="text-[#6B7280] text-xs font-['Open_Sans'] mb-4">See exactly what is missing and how to fix it — no commitment required.</p>
-                    <div className="space-y-1.5">
-                      {["3 quick wins", "Visibility gaps identified", "Clear next steps"].map((item) => (
+                    <div className="space-y-1.5 mb-4">
+                      {["3 quick wins identified", "Visibility gaps mapped", "Clear next steps outlined"].map((item) => (
                         <div key={item} className="flex items-center gap-2">
                           <CheckCircle2 size={13} style={{ color: "#6B3FA0" }} />
                           <span className="text-[#6B7280] text-xs font-['Open_Sans']">{item}</span>
                         </div>
                       ))}
                     </div>
+                    <a href={STRATEGY_AUDIT_URL} className="btn-primary text-xs py-2.5 px-4 w-full justify-center">
+                      <span>Book Free Visibility Scan</span>
+                    </a>
                   </div>
                 </div>
               </FadeSection>
@@ -147,14 +140,15 @@ export default function Contact() {
                     <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: "rgba(107, 63, 160, 0.1)" }}>
                       <CheckCircle2 size={28} style={{ color: "#6B3FA0" }} />
                     </div>
-                    <h3 className="font-['Montserrat'] font-700 text-[#1A1A1A] text-xl mb-3">Message Received</h3>
+                    <h3 className="font-['Montserrat'] font-bold text-[#1A1A1A] text-xl mb-3">Message Received</h3>
                     <p className="text-[#6B7280] font-['Open_Sans']">
-                      Thank you. Your message has been received. A response will be sent to your inbox as soon as possible.
+                      Thank you. Your email client should have opened with your message. If not, email us directly at <a href="mailto:hello@kiraunistrategies.com" className="text-[#6B3FA0] underline">hello@kiraunistrategies.com</a>.
                     </p>
                   </div>
                 ) : (
                   <div className="bg-white rounded-lg p-8 lg:p-10" style={{ border: "1px solid #e8e8e8" }}>
-                    <h2 className="font-['Montserrat'] font-700 text-[#1A1A1A] text-xl mb-6">Send an Inquiry</h2>
+                    <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] text-xl mb-2">Send an Inquiry</h2>
+                    <p className="text-[#6B7280] text-sm font-['Open_Sans'] mb-6">Fill out the form below and we will be in touch within 1–2 business days.</p>
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
@@ -184,9 +178,9 @@ export default function Contact() {
                         <label className="form-label">What do you need support with?</label>
                         <select name="support" value={form.support} onChange={handleChange} className="form-input">
                           <option value="">Select an area</option>
-                          <option value="visibility">AI Visibility & Search</option>
-                          <option value="brand">Brand & Messaging</option>
-                          <option value="systems">Systems & Automation</option>
+                          <option value="visibility">AI Visibility &amp; Search</option>
+                          <option value="brand">Brand &amp; Messaging</option>
+                          <option value="systems">Systems &amp; Automation</option>
                           <option value="strategy">Overall Strategy</option>
                           <option value="unsure">Not sure yet</option>
                         </select>
@@ -205,6 +199,43 @@ export default function Contact() {
               </FadeSection>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Embedded Cal.com Visibility Scan Booking */}
+      <section className="section-white">
+        <div className="container">
+          <FadeSection>
+            <div className="text-center mb-10">
+              <GoldEyebrow>Book Your Scan</GoldEyebrow>
+              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-3" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}>
+                Schedule a Visibility Scan
+              </h2>
+              <p className="text-[#6B7280] font-['Open_Sans'] max-w-xl mx-auto">
+                Pick a time that works for you. In 30 minutes, we will identify your biggest visibility gaps and give you a clear action plan.
+              </p>
+            </div>
+          </FadeSection>
+          <FadeSection delay={100}>
+            <div className="rounded-xl overflow-hidden shadow-lg" style={{ border: "2px solid rgba(107, 63, 160, 0.15)" }}>
+              <div className="flex items-center gap-3 px-6 py-4" style={{ backgroundColor: "#6B3FA0" }}>
+                <Calendar size={18} color="#D4AF37" />
+                <span className="font-['Montserrat'] font-semibold text-white text-sm">Strategy + Visibility Audit — Kirauni Strategies</span>
+              </div>
+              <iframe
+                src="https://cal.com/kiraunistrategies/visibility-audit?embed=true&theme=light"
+                width="100%"
+                height="700"
+                frameBorder="0"
+                title="Schedule a Visibility Scan with Kirauni Strategies"
+                style={{ display: "block", backgroundColor: "#fff" }}
+                allow="camera; microphone; payment"
+              />
+            </div>
+            <p className="text-center text-[#6B7280] text-xs font-['Open_Sans'] mt-4">
+              Scheduling powered by Cal.com. <a href="https://cal.com/kiraunistrategies/visibility-audit" target="_blank" rel="noopener noreferrer" className="text-[#6B3FA0] underline">Open in new tab</a> if the calendar does not load.
+            </p>
+          </FadeSection>
         </div>
       </section>
     </Layout>
