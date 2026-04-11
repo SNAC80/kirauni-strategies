@@ -6,10 +6,9 @@
  */
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import { Mail, Phone, ArrowRight, CheckCircle2, Calendar } from "lucide-react";
+import { Mail, Phone, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const VISIBILITY_SCAN_URL = "/visibility-scan";
-const STRATEGY_AUDIT_URL = "/strategy-audit";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const [visible, setVisible] = useState(false);
@@ -124,7 +123,7 @@ export default function Contact() {
                         </div>
                       ))}
                     </div>
-                    <a href={STRATEGY_AUDIT_URL} className="btn-primary text-xs py-2.5 px-4 w-full justify-center">
+                    <a href={VISIBILITY_SCAN_URL} className="btn-primary text-xs py-2.5 px-4 w-full justify-center">
                       <span>Book Free Visibility Scan</span>
                     </a>
                   </div>
@@ -202,42 +201,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Embedded Cal.com Visibility Scan Booking */}
-      <section className="section-white">
-        <div className="container">
-          <FadeSection>
-            <div className="text-center mb-10">
-              <GoldEyebrow>Book Your Scan</GoldEyebrow>
-              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-3" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}>
-                Schedule a Visibility Scan
-              </h2>
-              <p className="text-[#6B7280] font-['Open_Sans'] max-w-xl mx-auto">
-                Pick a time that works for you. In 30 minutes, we will identify your biggest visibility gaps and give you a clear action plan.
-              </p>
-            </div>
-          </FadeSection>
-          <FadeSection delay={100}>
-            <div className="rounded-xl overflow-hidden shadow-lg" style={{ border: "2px solid rgba(107, 63, 160, 0.15)" }}>
-              <div className="flex items-center gap-3 px-6 py-4" style={{ backgroundColor: "#6B3FA0" }}>
-                <Calendar size={18} color="#D4AF37" />
-                <span className="font-['Montserrat'] font-semibold text-white text-sm">Strategy + Visibility Audit — Kirauni Strategies</span>
-              </div>
-              <iframe
-                src="https://cal.com/kiraunistrategies/visibility-audit?embed=true&theme=light"
-                width="100%"
-                height="700"
-                frameBorder="0"
-                title="Schedule a Visibility Scan with Kirauni Strategies"
-                style={{ display: "block", backgroundColor: "#fff" }}
-                allow="camera; microphone; payment"
-              />
-            </div>
-            <p className="text-center text-[#6B7280] text-xs font-['Open_Sans'] mt-4">
-              Scheduling powered by Cal.com. <a href="https://cal.com/kiraunistrategies/visibility-audit" target="_blank" rel="noopener noreferrer" className="text-[#6B3FA0] underline">Open in new tab</a> if the calendar does not load.
-            </p>
-          </FadeSection>
-        </div>
-      </section>
     </Layout>
   );
 }
