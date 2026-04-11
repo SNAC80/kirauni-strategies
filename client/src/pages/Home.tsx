@@ -7,6 +7,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
+import NewsletterSection from "@/components/NewsletterSection";
 import { ArrowRight, CheckCircle2, Search, Lightbulb, Settings, TrendingUp, Eye } from "lucide-react";
 
 const VISIBILITY_SCAN_URL = "/visibility-scan";
@@ -162,14 +163,14 @@ export default function Home() {
                   transition: "opacity 0.5s ease-out 480ms",
                 }}
               >
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <div className="flex flex-nowrap items-center gap-x-5 gap-y-2 overflow-x-auto">
                   {[
                     "Houston-based",
                     "Black woman-led",
                     "AI-powered systems",
                     "20+ years experience"
                   ].map((tag, i) => (
-                    <span key={i} className="flex items-center gap-1.5 text-xs font-['Montserrat'] tracking-wide" style={{ color: "#6B7280" }}>
+                    <span key={i} className="flex items-center gap-1.5 text-xs font-['Montserrat'] tracking-wide whitespace-nowrap flex-shrink-0" style={{ color: "#6B7280" }}>
                       <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#D4AF37" }} />
                       {tag}
                     </span>
@@ -246,31 +247,35 @@ export default function Home() {
               </p>
             </FadeSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
               {[
                 {
                   icon: <Search size={24} />,
-                  title: "Not showing up in search or AI tools",
-                  desc: "Visibility is not optional. If you are not showing up, you are losing business.",
+                  bullet: "Not showing up in search or AI tools",
+                  title: "You are invisible online.",
+                  desc: "Visibility is not optional. If you are not showing up in search or AI tools, you are losing business to competitors who are.",
                 },
                 {
                   icon: <Lightbulb size={24} />,
-                  title: "Message is not clear",
-                  desc: "If people do not understand what you do, they will not buy it — no matter how good you are.",
+                  bullet: "Message is not clear",
+                  title: "Your message is confusing.",
+                  desc: "If people do not understand what you do in seconds, they will not buy it — no matter how good you are at what you do.",
                 },
                 {
                   icon: <Settings size={24} />,
-                  title: "Systems are not built to convert",
-                  desc: "Without systems, every lead is a missed opportunity. Structure creates consistent results.",
+                  bullet: "Systems are not built to convert",
+                  title: "Your systems are not built to convert.",
+                  desc: "Without systems, every lead is a missed opportunity. Structure creates consistent results and scalable growth.",
                 },
               ].map((item, i) => (
-                <FadeSection key={i} delay={i * 120}>
-                  <div className="bg-white rounded-lg p-6 text-left card-hover" style={{ border: "1px solid #e8e8e8" }}>
-                    <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(107, 63, 160, 0.08)" }}>
+                <FadeSection key={i} delay={i * 120} className="h-full">
+                  <div className="bg-white rounded-lg p-6 text-left card-hover h-full flex flex-col" style={{ border: "1px solid #e8e8e8", minHeight: "220px" }}>
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 flex-shrink-0" style={{ backgroundColor: "rgba(107, 63, 160, 0.08)" }}>
                       <span style={{ color: "#6B3FA0" }}>{item.icon}</span>
                     </div>
-                    <h3 className="font-['Montserrat'] font-600 text-[#1A1A1A] text-base mb-2">{item.title}</h3>
-                    <p className="text-[#6B7280] text-sm leading-relaxed font-['Open_Sans']">{item.desc}</p>
+                    <p className="text-xs font-['Montserrat'] font-semibold uppercase tracking-wider mb-1.5" style={{ color: "#D4AF37" }}>{item.bullet}</p>
+                    <h3 className="font-['Montserrat'] font-bold text-[#1A1A1A] text-base mb-2 leading-snug">{item.title}</h3>
+                    <p className="text-[#6B7280] text-sm leading-relaxed font-['Open_Sans'] flex-1">{item.desc}</p>
                   </div>
                 </FadeSection>
               ))}
@@ -719,50 +724,7 @@ export default function Home() {
       </section>
 
       {/* ===== NEWSLETTER ===== */}
-      <section className="section-white">
-        <div className="container">
-          <div className="max-w-xl mx-auto text-center">
-            <FadeSection>
-              <GoldEyebrow>Stay Connected</GoldEyebrow>
-              <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-3" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}>
-                Join the Kirauni List
-              </h2>
-              <p className="text-[#6B7280] mb-8 font-['Open_Sans']">
-                Get insights on visibility, clarity, and systems to grow your business with intention.
-              </p>
-
-              {newsletterSubmitted ? (
-                <div className="bg-[#F5F5F5] rounded-lg p-6">
-                  <p className="font-['Montserrat'] font-600 text-[#6B3FA0] text-base">
-                    You are in. Expect thoughtful insights on visibility, clarity, and systems.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="text"
-                    placeholder="First Name"
-                    value={newsletterName}
-                    onChange={(e) => setNewsletterName(e.target.value)}
-                    className="form-input flex-1"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    required
-                    className="form-input flex-1"
-                  />
-                  <button type="submit" className="btn-primary flex-shrink-0">
-                    <span>Join the List</span>
-                  </button>
-                </form>
-              )}
-            </FadeSection>
-          </div>
-        </div>
-      </section>
+      <NewsletterSection />
     </Layout>
   );
 }

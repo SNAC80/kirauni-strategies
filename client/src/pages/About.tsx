@@ -6,7 +6,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import NewsletterSection from "@/components/NewsletterSection";
 
 // New founder headshot (Untitleddesign(8).png — uploaded)
 const FOUNDER_HEADSHOT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/founder-headshot_a7977ccf.png";
@@ -206,6 +207,77 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Behind the Crown */}
+      <section className="section-white">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <FadeSection delay={100}>
+                <div className="relative">
+                  <img
+                    src={FOUNDER_HEADSHOT}
+                    alt="Shavonne Ambonisye-Clifton — Behind the Crown"
+                    className="w-full rounded-xl object-cover shadow-2xl"
+                    style={{ maxHeight: "520px", objectPosition: "center top" }}
+                  />
+                  {/* Gold frame accent */}
+                  <div className="absolute -bottom-4 -left-4 w-full h-full rounded-xl pointer-events-none" style={{ border: "2px solid #D4AF37", opacity: 0.35 }} />
+                  {/* Quote badge */}
+                  <div className="absolute bottom-8 -right-4 bg-white rounded-xl shadow-xl p-4 max-w-[200px]" style={{ border: "1px solid #f0f0f0" }}>
+                    <p className="font-['Montserrat'] font-bold text-xs text-[#1A1A1A] leading-snug italic">&ldquo;Organized systems create organized income.&rdquo;</p>
+                    <p className="text-xs font-['Open_Sans'] mt-1.5" style={{ color: "#D4AF37" }}>— Shavonne A-C</p>
+                  </div>
+                </div>
+              </FadeSection>
+            </div>
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <FadeSection>
+                <GoldEyebrow>The Founder</GoldEyebrow>
+                <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-4" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", letterSpacing: "-0.02em" }}>
+                  Behind the Crown
+                </h2>
+                <p className="font-['Montserrat'] font-semibold text-lg mb-5" style={{ color: "#6B3FA0" }}>
+                  This is not about more marketing. It is about building a business that works.
+                </p>
+                <div className="space-y-4 text-[#6B7280] leading-relaxed font-['Open_Sans'] mb-7">
+                  <p>
+                    Shavonne Ambonisye-Clifton is a Black woman veteran, strategic operator, and the founder of Kirauni Strategies. With over 20 years of experience transforming complex systems — from military operations to enterprise-level implementations — she brings a level of rigor and precision that most boutique consulting firms simply cannot match.
+                  </p>
+                  <p>
+                    She built Kirauni because she saw the same pattern everywhere in Houston's small business community: talented, hardworking owners who were invisible online, unclear in their messaging, and operating without the systems needed to grow. Kirauni was built to close that gap — permanently.
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                  {[
+                    "20+ years of systems experience",
+                    "Military-trained precision and discipline",
+                    "Enterprise-to-boutique strategy translation",
+                    "Houston-based, nationally serving",
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-2">
+                      <CheckCircle2 size={14} className="mt-0.5 flex-shrink-0" style={{ color: "#6B3FA0" }} />
+                      <span className="text-sm font-['Open_Sans'] text-[#1A1A1A]">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-4">
+                  <a href={VISIBILITY_SCAN_URL} className="btn-primary">
+                    <span>Book Free Visibility Scan</span>
+                    <ArrowRight size={16} />
+                  </a>
+                  <Link href="/work-with-us" className="btn-secondary">
+                    Work With Us
+                  </Link>
+                </div>
+              </FadeSection>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <NewsletterSection />
 
       {/* CTA */}
       <section className="section-white">

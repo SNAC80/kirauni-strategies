@@ -47,13 +47,13 @@ export default function Header() {
       }`}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-20 lg:h-28">
+        <div className="flex items-center justify-between h-24 lg:h-32">
           {/* Logo — larger */}
           <Link href="/" className="flex-shrink-0 flex items-center">
             <img
               src={LOGO_URL}
               alt="Kirauni Strategies"
-              className="h-14 lg:h-20 w-auto object-contain"
+              className="h-18 lg:h-24 w-auto object-contain"
             />
           </Link>
 
