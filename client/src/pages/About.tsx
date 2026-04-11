@@ -89,19 +89,9 @@ export default function About() {
       {/* Origin */}
       <section className="section-gray">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5">
-              <FadeSection>
-                <img
-                  src={KCELL_IMAGE}
-                  alt="Shavonne Ambonisye-Clifton — Founder"
-                  className="w-full rounded-lg object-cover shadow-xl"
-                  style={{ maxHeight: "560px", objectPosition: "center top" }}
-                />
-              </FadeSection>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-7">
-              <FadeSection delay={100}>
+              <FadeSection>
                 <GoldEyebrow>Our Origin</GoldEyebrow>
                 <h2 className="font-['Montserrat'] font-bold text-[#1A1A1A] mb-6" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", letterSpacing: "-0.02em" }}>
                   20+ Years of Systems Thinking, Applied to Small Business
@@ -116,6 +106,23 @@ export default function About() {
                   <p>
                     Kirauni Strategies was built to close that gap. To bring enterprise-level strategic thinking to boutique businesses. To apply the same rigor that builds military systems and corporate infrastructure to the businesses that need it most — and deserve it most.
                   </p>
+                </div>
+              </FadeSection>
+            </div>
+            <div className="lg:col-span-5">
+              <FadeSection delay={100}>
+                <div className="grid grid-cols-1 gap-4">
+                  {[
+                    { num: "20+", label: "Years of Systems Experience" },
+                    { num: "100+", label: "Businesses Served" },
+                    { num: "3", label: "Core Service Pillars" },
+                    { num: "1", label: "Mission: Elevate Small Business" },
+                  ].map((stat) => (
+                    <div key={stat.num} className="bg-white rounded-lg p-6 flex items-center gap-5" style={{ border: "1px solid #e8e8e8" }}>
+                      <div className="font-['Montserrat'] font-bold text-3xl" style={{ color: "#6B3FA0" }}>{stat.num}</div>
+                      <div className="font-['Open_Sans'] text-[#6B7280] text-sm leading-snug">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
               </FadeSection>
             </div>

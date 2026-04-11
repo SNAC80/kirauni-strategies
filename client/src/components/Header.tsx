@@ -2,7 +2,7 @@
  * Kirauni Strategies — Header Component
  * Design: Crown Authority — sticky light header, larger logo, nav center/right, CTA far right
  * Colors: White bg, Purple primary, Gold accents
- * Fix: Larger logo (h-12 lg:h-16), CTA → Cal.com visibility audit, header height increased
+ * Fix: Logo enlarged to h-14 lg:h-20, header h-20 lg:h-28, removed duplicate mobile CTA button
  */
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
@@ -47,13 +47,13 @@ export default function Header() {
       }`}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-20 lg:h-24">
+        <div className="flex items-center justify-between h-20 lg:h-28">
           {/* Logo — larger */}
           <Link href="/" className="flex-shrink-0 flex items-center">
             <img
               src={LOGO_URL}
               alt="Kirauni Strategies"
-              className="h-12 lg:h-16 w-auto object-contain"
+              className="h-14 lg:h-20 w-auto object-contain"
             />
           </Link>
 
@@ -106,12 +106,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/visibility-scan"
-              className="btn-primary mt-4 text-center"
-            >
-              <span>Book Free Visibility Scan</span>
-            </Link>
+            {/* CTA is always visible in the header — no duplicate needed here */}
           </nav>
         </div>
       )}
