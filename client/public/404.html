@@ -6,7 +6,7 @@
     <script type="text/javascript">
       // GitHub Pages SPA redirect
       // Converts the path to a query string so the main index.html can handle it
-      var pathSegmentsToKeep = 1; // 1 = keep the repo name segment
+      var pathSegmentsToKeep = 0; // custom domain/root hosting keeps no repo-name segment
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
