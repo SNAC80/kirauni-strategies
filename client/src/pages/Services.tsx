@@ -358,9 +358,9 @@ export default function Services() {
                 <div className="flex-shrink-0 text-center lg:text-right">
                   <div className="font-['Montserrat'] font-bold text-white text-2xl mb-1">$1,500</div>
                   <div className="text-purple-300 text-sm font-['Open_Sans'] mb-5">setup fee</div>
-                  <Link href="/apply" className="btn-gold whitespace-nowrap">
+                  <a href="https://pay.kiraunistrategies.com/b/5kQaEXdGa1Yp7gz1fbeME05" className="btn-gold whitespace-nowrap">
                     Add to My Package
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

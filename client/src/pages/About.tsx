@@ -11,6 +11,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 
 // New founder headshot (Untitleddesign(8).png — uploaded)
 const FOUNDER_HEADSHOT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/founder-headshot_a7977ccf.png";
+const FOUNDER_SECONDARY_IMAGE = "/images/about-founder-secondary.png";
 // Original KSCell image used in the origin section
 const KCELL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663539823047/JGBuqh7zosykm4EVvP5SRN/KSCell(1)_aab683bb.png";
 const VISIBILITY_SCAN_URL = "/visibility-scan";
@@ -216,7 +217,7 @@ export default function About() {
               <FadeSection delay={100}>
                 <div className="relative">
                   <img
-                    src={FOUNDER_HEADSHOT}
+                    src={FOUNDER_SECONDARY_IMAGE}
                     alt="Shavonne Ambonisye-Clifton — Behind the Crown"
                     className="w-full rounded-xl object-cover shadow-2xl"
                     style={{ maxHeight: "520px", objectPosition: "center top" }}

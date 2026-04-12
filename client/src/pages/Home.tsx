@@ -262,7 +262,7 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <a href={AI_PHONE_AGENT_URL} className="btn-gold inline-flex items-center gap-2">
+                  <a href={AI_PHONE_AGENT_URL} className="btn-gold inline-flex w-full sm:w-auto justify-center text-center whitespace-normal sm:whitespace-nowrap leading-snug">
                     Learn More About the AI Phone Agent
                     <ArrowRight size={16} />
                   </a>
